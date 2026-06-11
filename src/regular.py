@@ -14,43 +14,37 @@ from time import sleep
 alfabeto = ['LOGIN', 'AUTH', 'REQUEST', 'LOGOUT']
 
 ESTADO_INICIAL = 0
-ESTADOS_FINAIS = {4}
-ESTADO_MORTO = 5
+ESTADOS_FINAIS = {3}
+ESTADO_MORTO = 4
 
 TRANSICOES = {
     (0, 'LOGIN'):   1,
-    (0, 'AUTH'):    5,
-    (0, 'REQUEST'): 5,
-    (0, 'LOGOUT'):  5,
+    (0, 'AUTH'):    4,
+    (0, 'REQUEST'): 4,
+    (0, 'LOGOUT'):  4,
 
-    (1, 'LOGIN'):   5,
+    (1, 'LOGIN'):   4,
     (1, 'AUTH'):    2,
-    (1, 'REQUEST'): 5,
-    (1, 'LOGOUT'):  5,
+    (1, 'REQUEST'): 4,
+    (1, 'LOGOUT'):  4,
 
-    (2, 'LOGIN'):   5,
-    (2, 'AUTH'):    5,
-    (2, 'REQUEST'): 3,
-    (2, 'LOGOUT'):  4,
+    (2, 'LOGIN'):   4,
+    (2, 'AUTH'):    4,
+    (2, 'REQUEST'): 2,
+    (2, 'LOGOUT'):  3,
 
-    (3, 'LOGIN'):   5,
-    (3, 'AUTH'):    5,
-    (3, 'REQUEST'): 3,
+    (3, 'LOGIN'):   4,
+    (3, 'AUTH'):    4,
+    (3, 'REQUEST'): 4,
     (3, 'LOGOUT'):  4,
-
-    (4, 'LOGIN'):   5,
-    (4, 'AUTH'):    5,
-    (4, 'REQUEST'): 5,
-    (4, 'LOGOUT'):  5,
 }
 
 NOMES_ESTADOS = {
     0: 'inicial',
     1: 'LOGIN',
     2: 'AUTH',
-    3: 'REQUEST',
-    4: 'LOGOUT (aceito)',
-    5: 'morto (rejeitado)',
+    3: 'LOGOUT (aceito)',
+    4: 'morto (rejeitado)',
 }
 
 def extrair_palavras(texto: str) -> list[str]:
@@ -104,9 +98,9 @@ def main_regular():
 
             elif linha % 2 == 0:
                 if entrada.strip() == '1':
-                    print("Esperado: Linguaguem aceita\n\n")
+                    print("Esperado: Linguagem aceita\n\n")
                 elif entrada.strip() == '0':
-                    print("Esperado: Linguaguem não aceita\n\n")
+                    print("Esperado: Linguagem não aceita\n\n")
 
                 sleep(0.5)
 
