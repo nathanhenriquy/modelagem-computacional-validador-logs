@@ -4,9 +4,9 @@
 ---
 
 ## 0. Logística e envio
-- [ ] Trabalho feito em **trio**
-- [ ] **Repositório GitHub público** criado
-- [ ] **Link do repositório** postado no Blackboard
+- [x] Trabalho feito em **trio**
+- [x] **Repositório GitHub público** criado
+- [] **Link do repositório** postado no Blackboard
 - [ ] **Vídeo no YouTube como _unlisted_** (10 a 12 min)
 - [ ] **Link do vídeo** postado no Blackboard 
 - [ ] **Relatório técnico em PDF**
