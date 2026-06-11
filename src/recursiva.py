@@ -9,6 +9,8 @@
 # as três quantidades eram iguais). Caso contrário, rejeita.
 #
 # Símbolos da fita: OPEN, COMMIT, CLOSE (entrada) ; X, Y, Z (marcados) ; _ (branco)
+import sys
+from time import sleep
 
 VAZIO = '_'
 
@@ -65,25 +67,24 @@ def extrair_palavras(texto: str) -> list[str]:
     return texto.upper().split()
 
 
-def turing(entrada: list[str], max_passos: int = 100000) -> str:
+def maquina_turing(entrada: list[str], max_passos: int = 100000) -> str:
+    passos = 0
     if not entrada:
-        return "Linguagem não Aceita - entrada vazia"
+        return "Linguagem não Aceita - entrada vazia", passos
 
     for simbolo in entrada:
         if simbolo not in ALFABETO_ENTRADA:
             print(f"  '{simbolo}' > símbolo fora do alfabeto de entrada")
-            return "Linguagem não Aceita"
+            return "Linguagem não Aceita", passos
 
     fita = list(entrada)
     cabeca = 0
     estado = ESTADO_INICIAL
-    passos = 0
-
+    
     while estado not in ESTADOS_FINAIS and estado != ESTADO_REJEITA:
-        passos += 1
         if passos > max_passos:
             print("  Limite de passos excedido (provável loop)")
-            return "Linguagem não Aceita"
+            return "Linguagem não Aceita", passos
 
         # Símbolo sob a cabeça (branco se fora da fita à direita)
         simbolo = fita[cabeca] if 0 <= cabeca < len(fita) else VAZIO
@@ -95,6 +96,8 @@ def turing(entrada: list[str], max_passos: int = 100000) -> str:
             break
 
         novo_estado, escrito, movimento = transicao
+
+        passos += 1
 
         # Escreve na fita (expandindo à direita se necessário)
         if 0 <= cabeca < len(fita):
@@ -118,15 +121,45 @@ def turing(entrada: list[str], max_passos: int = 100000) -> str:
             estado = ESTADO_REJEITA
             break
 
-    return "Linguagem Aceita" if estado in ESTADOS_FINAIS else "Linguagem não Aceita"
+
+    resultado = "Linguagem Aceita" if estado in ESTADOS_FINAIS else "Linguagem não Aceita"
+    return resultado, passos
 
 
-def main():
-    entrada = extrair_palavras(input("Insira uma string: "))
-    print()
-    resultado = turing(entrada)
-    print(f"\n> {resultado}")
+def main_mt():
+    if len(sys.argv) > 1:
+        entrada = ' '.join(sys.argv[1:])
+        print(f"\nEntrada: {entrada}\n")
+        resultado, passos = maquina_turing(extrair_palavras(entrada))
+        print(f"\nResultado: {resultado}")
+        print(f"Passos executados: {passos}")
+        return
+
+    with open('testes/testes_recursiva.txt', 'r') as entradas:
+        linha = 1
+        n_entrada = 1
+
+        for entrada in entradas:
+            if linha % 2 != 0:
+                print(f"\nEntrada {n_entrada}:\n")
+
+                resultado, passos = maquina_turing(extrair_palavras(entrada))
+
+                print(f"\nResultado: {resultado}")
+                print(f"Passos executados: {passos}")
+
+                n_entrada += 1
+
+            elif linha % 2 == 0:
+                if entrada.strip() == '1':
+                    print("Esperado: Linguaguem aceita\n")
+                elif entrada.strip() == '0':
+                    print("Esperado: Linguaguem não aceita\n")
+
+                sleep(0.5)
+
+            linha += 1
 
 
 if __name__ == '__main__':
-    main()
+    main_mt()

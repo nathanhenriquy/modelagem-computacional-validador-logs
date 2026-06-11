@@ -8,6 +8,8 @@
 #   3 = após REQUEST (aceita mais REQUEST ou LOGOUT)
 #   4 = após LOGOUT (estado de aceitação — final)
 #   5 = estado morto (dead state — rejeição definitiva)
+import sys
+from time import sleep
 
 alfabeto = ['LOGIN', 'AUTH', 'REQUEST', 'LOGOUT']
 
@@ -21,7 +23,7 @@ TRANSICOES = {
     (0, 'REQUEST'): 5,
     (0, 'LOGOUT'):  5,
 
-    (1, 'LOGIN'):   1,
+    (1, 'LOGIN'):   5,
     (1, 'AUTH'):    2,
     (1, 'REQUEST'): 5,
     (1, 'LOGOUT'):  5,
@@ -36,7 +38,7 @@ TRANSICOES = {
     (3, 'REQUEST'): 3,
     (3, 'LOGOUT'):  4,
 
-    (4, 'LOGIN'):   5,  # nada é válido após LOGOUT
+    (4, 'LOGIN'):   5,
     (4, 'AUTH'):    5,
     (4, 'REQUEST'): 5,
     (4, 'LOGOUT'):  5,
@@ -57,6 +59,7 @@ def extrair_palavras(texto: str) -> list[str]:
 
 def dfa(entrada: list[str]) -> str:
     estado = ESTADO_INICIAL
+    passos = 0
 
     for palavra in entrada:
         if palavra not in alfabeto:
@@ -66,22 +69,50 @@ def dfa(entrada: list[str]) -> str:
         proximo = TRANSICOES.get((estado, palavra), ESTADO_MORTO)
         print(f"(q{estado} [{NOMES_ESTADOS[estado]}], {palavra}) > q{proximo} [{NOMES_ESTADOS[proximo]}]")
         estado = proximo
-        print(estado)
+        passos += 1
 
         if estado == ESTADO_MORTO:
             break
 
     aceita = estado in ESTADOS_FINAIS
 
+    print(f"\nPassos executados: {passos}")
+
     return "Linguagem aceita" if aceita else "Linguagem não aceita"
 
 
-def main():
-    entrada = extrair_palavras(input("Insira uma string: "))
+def main_regular():
+    if len(sys.argv) > 1:
+        entrada = ' '.join(sys.argv[1:])
+        print(f"\nEntrada: {entrada}\n")
+        resultado = dfa(extrair_palavras(entrada))
+        print(f"Resultado: {resultado}")
+        return
 
-    resultado = dfa(entrada)
-    print(resultado)
+    with open('testes/testes_regular.txt', 'r') as entradas:
+        linha = 1
+        n_entrada = 1
+
+        for entrada in entradas:
+            if linha % 2 != 0:
+                print(f"\nEntrada {n_entrada}:\n")
+
+                resultado = dfa(extrair_palavras(entrada))
+                print(f"Resultado: {resultado}")
+
+                n_entrada += 1
+
+            elif linha % 2 == 0:
+                if entrada.strip() == '1':
+                    print("Esperado: Linguaguem aceita\n\n")
+                elif entrada.strip() == '0':
+                    print("Esperado: Linguaguem não aceita\n\n")
+
+                sleep(0.5)
+
+            linha += 1
+            
 
 
 if '__main__' == __name__:
-    main()
+    main_regular()
