@@ -25,10 +25,10 @@ Para **cada um dos três níveis** (LR, LLC, R), conferir os 9 itens abaixo:
 - [ ] 3. Alfabeto utilizado (tokens: `LOGIN`, `AUTH`, `REQUEST`, `LOGOUT`)
 - [ ] 4. Exemplos de cadeias aceitas e rejeitadas
 - [ ] 5. Modelo (**DFA**) com **tabela de transição completa** + **diagrama**
-- [ ] 6. Implementação em Python
+- [x] 6. Implementação em Python
 - [ ] 7. Testes automatizados
-- [ ] 8. Execução passo a passo de **uma aceita** e **uma rejeitada**
-- [ ] 9. Número de passos consumidos pelo programa em cada teste
+- [x] 8. Execução passo a passo de **uma aceita** e **uma rejeitada**
+- [x] 9. Número de passos consumidos pelo programa em cada teste
 
 ### 1.2 Nível LLC — Blocos aninhados de transação (Pilha/PDA/GLC)
 > Cada `BEGIN` precisa de um `END` correspondente, podendo aninhar.
@@ -39,10 +39,10 @@ Para **cada um dos três níveis** (LR, LLC, R), conferir os 9 itens abaixo:
 - [ ] 3. Alfabeto utilizado (`BEGIN`, `END`)
 - [ ] 4. Exemplos de cadeias aceitas e rejeitadas
 - [ ] 5. Modelo (**PDA/GLC**) com **transições principais + evolução da pilha** + **diagrama**
-- [ ] 6. Implementação em Python
+- [x] 6. Implementação em Python
 - [ ] 7. Testes automatizados
-- [ ] 8. Execução passo a passo de **uma aceita** e **uma rejeitada**
-- [ ] 9. Número de passos consumidos pelo programa em cada teste
+- [x] 8. Execução passo a passo de **uma aceita** e **uma rejeitada**
+- [x] 9. Número de passos consumidos pelo programa em cada teste
 
 ### 1.3 Nível R — Trio balanceado (Máquina de Turing)
 > `L = { OPEN^n COMMIT^n CLOSE^n | n ≥ 1 }`
@@ -53,38 +53,38 @@ Para **cada um dos três níveis** (LR, LLC, R), conferir os 9 itens abaixo:
 - [ ] 3. Alfabeto utilizado (`OPEN`, `COMMIT`, `CLOSE` + símbolos de fita/branco)
 - [ ] 4. Exemplos de cadeias aceitas e rejeitadas
 - [ ] 5. Modelo (**MT**) com **tabela de transição completa** + **diagrama**
-- [ ] 6. Implementação em Python
+- [x] 6. Implementação em Python
 - [ ] 7. Testes automatizados
-- [ ] 8. Execução passo a passo de **uma aceita** e **uma rejeitada**
-- [ ] 9. Número de passos consumidos pelo programa em cada teste
+- [x] 8. Execução passo a passo de **uma aceita** e **uma rejeitada**
+- [x] 9. Número de passos consumidos pelo programa em cada teste
 
 ---
 
-## 2. Regras de implementação (atenção — fácil perder pontos aqui)
-- [ ] **Implementação manual obrigatória**: cada reconhecedor é um **simulador do autômato** (DFA, PDA ou MT)
-- [ ] Estados, alfabeto(s), estado inicial, estados finais e tabela de transição **declarados explicitamente como dados** (dicionários/conjuntos) — **não** como sequência de `if/else`
-- [ ] O programa **aplica a função de transição símbolo a símbolo** (ou movimento a movimento, na MT)
-- [ ] **`re` NÃO** pode ser o reconhecedor principal em nenhum dos três níveis
-- [ ] No LR, `re` só pode aparecer como **comparação opcional (bônus)** — nunca como engine de aceitação/rejeição
-- [ ] Bibliotecas auxiliares (Graphviz, pytest, matplotlib) são bem-vindas, mas **não substituem** o reconhecedor
+## 2. Regras de implementação
+- [x] **Implementação manual obrigatória**: cada reconhecedor é um **simulador do autômato** (DFA, PDA ou MT)
+- [x] Estados, alfabeto(s), estado inicial, estados finais e tabela de transição **declarados explicitamente como dados** (dicionários/conjuntos) — **não** como sequência de `if/else`
+- [x] O programa **aplica a função de transição símbolo a símbolo** (ou movimento a movimento, na MT)
+- [x] **`re` NÃO** pode ser o reconhecedor principal em nenhum dos três níveis
+- [x] No LR, `re` só pode aparecer como **comparação opcional (bônus)** — nunca como engine de aceitação/rejeição
+- [x] Bibliotecas auxiliares (Graphviz, pytest, matplotlib) são bem-vindas, mas **não substituem** o reconhecedor
 
 ### 2.1 Definição operacional de "passo" (contador exclusivo)
-- [ ] **DFA/NFA**: incrementa a cada leitura de símbolo **com mudança de estado**
-- [ ] **PDA**: incrementa a cada transição, **contando empilhamento e desempilhamento**
-- [ ] **MT**: incrementa a cada **movimento da cabeça** (leitura, escrita, deslocamento)
-- [ ] O contador **NÃO** conta iterações do laço Python nem linhas executadas
+- [x] **DFA/NFA**: incrementa a cada leitura de símbolo **com mudança de estado**
+- [x] **PDA**: incrementa a cada transição, **contando empilhamento e desempilhamento**
+- [x] **MT**: incrementa a cada **movimento da cabeça** (leitura, escrita, deslocamento)
+- [x] O contador **NÃO** conta iterações do laço Python nem linhas executadas
 
 ---
 
 ## 3. Bateria de testes
-- [ ] **LR**: 3 cadeias aceitas + 3 rejeitadas
-- [ ] **LLC**: 3 cadeias aceitas + 3 rejeitadas
-- [ ] **R**: 3 cadeias aceitas + 3 rejeitadas
-- [ ] **Total = 18 cadeias**
+- [x] **LR**: 3 cadeias aceitas + 3 rejeitadas
+- [x] **LLC**: 3 cadeias aceitas + 3 rejeitadas
+- [x] **R**: 3 cadeias aceitas + 3 rejeitadas
+- [x] **Total = 18 cadeias**
 - [ ] Incluir **casos de borda** quando fizer sentido (cadeia vazia, tamanho 1, no limite da regra)
-- [ ] O programa imprime **tabela esperado vs obtido** para cada teste
-- [ ] O programa informa o **número de passos** executados em cada cadeia
-- [ ] Reconhecedor robusto a **cadeias-surpresa** (mesmo alfabeto e definição formal) — até **0,25 ponto** reservado a isso
+- [x] O programa imprime **tabela esperado vs obtido** para cada teste
+- [x] O programa informa o **número de passos** executados em cada cadeia
+- [x] Reconhecedor robusto a **cadeias-surpresa** (mesmo alfabeto e definição formal) — até **0,25 ponto** reservado a isso
 
 ---
 
@@ -109,13 +109,13 @@ projeto/
   relatorio/
     relatorio.pdf
 ```
-- [ ] `README.md` presente
-- [ ] `requirements.txt` presente
-- [ ] `src/regular.py`, `src/livre_contexto.py`, `src/recursiva.py`, `src/testes.py`
-- [ ] `testes/` com os 3 arquivos `.txt`
+- [x] `README.md` presente
+- [x] `requirements.txt` presente
+- [x] `src/regular.py`, `src/livre_contexto.py`, `src/recursiva.py`, `src/testes.py`
+- [x] `testes/` com os 3 arquivos `.txt`
 - [ ] `diagramas/` com os 3 diagramas (DFA, PDA, MT)
 - [ ] `relatorio/relatorio.pdf`
-- [ ] Cada reconhecedor tem **modo de execução autônomo** (ex.: `python src/regular.py "LOGIN AUTH REQUEST LOGOUT"`)
+- [x] Cada reconhecedor tem **modo de execução autônomo** (ex.: `python src/regular.py "LOGIN AUTH REQUEST LOGOUT"`)
 - [ ] `testes.py` lê `testes/*.txt` e roda contra os 3 reconhecedores
 - [ ] README permite rodar a **bateria completa em um único comando**
 - [ ] Diagramas em PNG/SVG/PDF ou código TikZ/Graphviz — **fotos de quadro/papel NÃO são aceitas**
@@ -169,10 +169,10 @@ Divisão de fala (obrigatória):
 ---
 
 ### Conferência final rápida
-- [ ] 3 reconhecedores × 9 itens = tudo coberto
-- [ ] 18 cadeias de teste no total
-- [ ] Tabela esperado vs obtido + contagem de passos imprimindo corretamente
+- [x] 3 reconhecedores × 9 itens = tudo coberto
+- [x] 18 cadeias de teste no total
+- [x] Tabela esperado vs obtido + contagem de passos imprimindo corretamente
 - [ ] Repositório bate com a árvore de pastas exigida
 - [ ] Relatório dentro de 4–7 páginas com as 9 seções
 - [ ] Vídeo 10–12 min com fala dos 3 integrantes
-- [ ] Links (repo + vídeo) no Blackboard **antes do dia 10**
+- [ ] Links (repo + vídeo) no Blackboard
