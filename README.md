@@ -20,10 +20,10 @@ Para **cada um dos três níveis** (LR, LLC, R), conferir os 9 itens abaixo:
 > Começa com `LOGIN`, seguido de `AUTH`, seguido de **zero ou mais** `REQUEST`, terminando com `LOGOUT`.
 > Aceito: `LOGIN AUTH REQUEST REQUEST LOGOUT` · Rejeitado: `LOGIN LOGOUT AUTH`
 
-- [ ] 1. Descrição em português da linguagem
-- [ ] 2. Definição formal em notação matemática (`{w ∈ Σ* | …}` ou equivalente)
-- [ ] 3. Alfabeto utilizado (tokens: `LOGIN`, `AUTH`, `REQUEST`, `LOGOUT`)
-- [ ] 4. Exemplos de cadeias aceitas e rejeitadas
+- [x] 1. Descrição em português da linguagem
+- [x] 2. Definição formal em notação matemática (`{w ∈ Σ* | …}` ou equivalente)
+- [x] 3. Alfabeto utilizado (tokens: `LOGIN`, `AUTH`, `REQUEST`, `LOGOUT`)
+- [x] 4. Exemplos de cadeias aceitas e rejeitadas
 - [ ] 5. Modelo (**DFA**) com **tabela de transição completa** + **diagrama**
 - [x] 6. Implementação em Python
 - [ ] 7. Testes automatizados
@@ -34,10 +34,10 @@ Para **cada um dos três níveis** (LR, LLC, R), conferir os 9 itens abaixo:
 > Cada `BEGIN` precisa de um `END` correspondente, podendo aninhar.
 > Aceito: `BEGIN BEGIN END END` · Rejeitado: `BEGIN END END`
 
-- [ ] 1. Descrição em português da linguagem
-- [ ] 2. Definição formal em notação matemática
-- [ ] 3. Alfabeto utilizado (`BEGIN`, `END`)
-- [ ] 4. Exemplos de cadeias aceitas e rejeitadas
+- [x] 1. Descrição em português da linguagem
+- [x] 2. Definição formal em notação matemática
+- [x] 3. Alfabeto utilizado (`BEGIN`, `END`)
+- [x] 4. Exemplos de cadeias aceitas e rejeitadas
 - [ ] 5. Modelo (**PDA/GLC**) com **transições principais + evolução da pilha** + **diagrama**
 - [x] 6. Implementação em Python
 - [ ] 7. Testes automatizados
@@ -48,10 +48,10 @@ Para **cada um dos três níveis** (LR, LLC, R), conferir os 9 itens abaixo:
 > `L = { OPEN^n COMMIT^n CLOSE^n | n ≥ 1 }`
 > Aceito: `OPEN OPEN COMMIT COMMIT CLOSE CLOSE` · Rejeitado: `OPEN COMMIT CLOSE CLOSE`
 
-- [ ] 1. Descrição em português da linguagem
-- [ ] 2. Definição formal em notação matemática
-- [ ] 3. Alfabeto utilizado (`OPEN`, `COMMIT`, `CLOSE` + símbolos de fita/branco)
-- [ ] 4. Exemplos de cadeias aceitas e rejeitadas
+- [x] 1. Descrição em português da linguagem
+- [x] 2. Definição formal em notação matemática
+- [x] 3. Alfabeto utilizado (`OPEN`, `COMMIT`, `CLOSE` + símbolos de fita/branco)
+- [x] 4. Exemplos de cadeias aceitas e rejeitadas
 - [ ] 5. Modelo (**MT**) com **tabela de transição completa** + **diagrama**
 - [x] 6. Implementação em Python
 - [ ] 7. Testes automatizados
@@ -113,12 +113,12 @@ projeto/
 - [x] `requirements.txt` presente
 - [x] `src/regular.py`, `src/livre_contexto.py`, `src/recursiva.py`, `src/testes.py`
 - [x] `testes/` com os 3 arquivos `.txt`
-- [ ] `diagramas/` com os 3 diagramas (DFA, PDA, MT)
+- [x] `diagramas/` com os 3 diagramas (DFA, PDA, MT)
 - [ ] `relatorio/relatorio.pdf`
 - [x] Cada reconhecedor tem **modo de execução autônomo** (ex.: `python src/regular.py "LOGIN AUTH REQUEST LOGOUT"`)
 - [ ] `testes.py` lê `testes/*.txt` e roda contra os 3 reconhecedores
 - [ ] README permite rodar a **bateria completa em um único comando**
-- [ ] Diagramas em PNG/SVG/PDF ou código TikZ/Graphviz — **fotos de quadro/papel NÃO são aceitas**
+- [x] Diagramas em PNG/SVG/PDF ou código TikZ/Graphviz — **fotos de quadro/papel NÃO são aceitas**
 
 ---
 
@@ -172,7 +172,7 @@ Divisão de fala (obrigatória):
 - [x] 3 reconhecedores × 9 itens = tudo coberto
 - [x] 18 cadeias de teste no total
 - [x] Tabela esperado vs obtido + contagem de passos imprimindo corretamente
-- [ ] Repositório bate com a árvore de pastas exigida
+- [x] Repositório bate com a árvore de pastas exigida
 - [ ] Relatório dentro de 4–7 páginas com as 9 seções
 - [ ] Vídeo 10–12 min com fala dos 3 integrantes
 - [ ] Links (repo + vídeo) no Blackboard
