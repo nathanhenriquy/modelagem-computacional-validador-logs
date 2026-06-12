@@ -1,5 +1,3 @@
-# PDA — Reconhecedor de blocos BEGIN/END aninhados
-
 import sys
 from time import sleep
 
@@ -10,9 +8,7 @@ ESTADO_INICIAL = 'q_lendo'
 ESTADOS_FINAIS = {'q_lendo'}
 MARCADOR       = 'B'
 
-# Tabela de transição: (estado, símbolo, topo_pilha) → (novo_estado, ação_pilha)
-# topo_pilha : None = pilha vazia | MARCADOR = marcador no topo
-# ação_pilha : 'push' empilha MARCADOR | 'pop' desempilha | None sem alteração
+
 TRANSICOES: dict[tuple, tuple] = {
     ('q_lendo', 'BEGIN', None):     ('q_lendo', 'push'),
     ('q_lendo', 'BEGIN', MARCADOR): ('q_lendo', 'push'),
